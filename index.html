@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Горячая линия комплаенса — Университет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F6F2;
+    --surface: #FFFFFF;
+    --accent: #1B4D4A;
+    --accent-mid: #2A6B67;
+    --accent-light: #EAF2F1;
+    --accent-xlight: #F2F8F7;
+    --text: #161614;
+    --text-secondary: #6B6965;
+    --text-tertiary: #9B9894;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+    --red: #C0392B;
+    --red-light: #FDF0EE;
+    --amber: #B45309;
+    --amber-light: #FEFCE8;
+    --success: #1D7A54;
+    --success-light: #EDFBF4;
+    --r-sm: 8px;
+    --r-md: 14px;
+    --r-lg: 20px;
+    --r-xl: 28px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── TOPBAR ─── */
+  .topbar {
+    background: var(--accent);
+    color: rgba(255,255,255,0.85);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-align: center;
+    padding: 9px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+  }
+  .topbar-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .topbar-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    flex-shrink: 0;
+  }
+  .topbar-item span { color: rgba(255,255,255,0.95); font-weight: 500; }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-decoration: none;
+  }
+  .logo-mark {
+    width: 34px; height: 34px;
+    background: var(--accent);
+    border-radius: var(--r-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .logo-mark svg { width: 18px; height: 18px; }
+  .logo-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+  }
+  .logo-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.03em;
+    margin-top: 2px;
+    display: block;
+  }
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  nav a {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 7px 14px;
+    border-radius: var(--r-sm);
+    transition: color 0.15s, background 0.15s;
+    font-weight: 400;
+  }
+  nav a:hover { color: var(--text); background: var(--bg); }
+  .btn-track {
+    background: var(--accent-light);
+    color: var(--accent) !important;
+    font-weight: 500 !important;
+    border: 1px solid rgba(27,77,74,0.15);
+  }
+  .btn-track:hover { background: #D5E9E8 !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 40px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(27,77,74,0.15);
+  }
+  .hero-badge-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 500;
+    line-height: 1.12;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent-mid);
+  }
+  .hero-desc {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 420px;
+    font-weight: 300;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--r-md);
+    padding: 14px 28px;
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.18s, transform 0.12s;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: var(--accent-mid); transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    padding: 14px 28px;
+    font-size: 14.5px;
+    font-weight: 400;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.18s, border-color 0.18s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-secondary:hover { background: var(--surface); border-color: var(--border-strong); }
+
+  /* ─── TRUST CARDS ─── */
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .trust-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+  }
+  .trust-icon {
+    width: 36px; height: 36px;
+    border-radius: var(--r-sm);
+    background: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .trust-icon svg { width: 17px; height: 17px; color: var(--accent); }
+  .trust-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .trust-desc {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ─── STAT ROW ─── */
+  .stat-row {
+    display: flex;
+    gap: 28px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+  .stat { }
+  .stat-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .stat-label { font-size: 12px; color: var(--text-secondary); line-height: 1.3; max-width: 90px; }
+
+  /* ─── HOW IT WORKS ─── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 40px;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .section-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 300;
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .step {
+    background: var(--surface);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 16px;
+    -webkit-text-stroke: 1.5px var(--accent);
+    color: transparent;
+  }
+  .step-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    border: 1px solid rgba(27,77,74,0.12);
+  }
+  .step-icon svg { width: 20px; height: 20px; color: var(--accent); }
+  .step h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .step p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+  .step-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    border-radius: 100px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(27,77,74,0.12);
+  }
+
+  /* ─── CATEGORIES ─── */
+  .categories-bg {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 0;
+  }
+  .cat-card {
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 20px 22px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    position: relative;
+    background: var(--bg);
+  }
+  .cat-card:hover {
+    border-color: var(--accent);
+    background: var(--accent-xlight);
+    box-shadow: 0 0 0 3px rgba(27,77,74,0.06);
+  }
+  .cat-card.high .cat-level { background: var(--red-light); color: var(--red); border-color: rgba(192,57,43,0.2); }
+  .cat-card.medium .cat-level { background: var(--amber-light); color: var(--amber); border-color: rgba(180,83,9,0.2); }
+  .cat-card.low .cat-level { background: var(--success-light); color: var(--success); border-color: rgba(29,122,84,0.2); }
+  .cat-level {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+    border: 1px solid;
+  }
+  .cat-level-dot { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+  .cat-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 5px;
+    line-height: 1.3;
+  }
+  .cat-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ─── FORM SECTION ─── */
+  .form-wrap {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 48px;
+    align-items: start;
+  }
+  .form-main {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+  }
+  .form-header {
+    padding: 28px 32px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .form-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 5px;
+  }
+  .form-header-sub {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 300;
+  }
+  .form-steps-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 20px 32px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .fsi-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    position: relative;
+  }
+  .fsi-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: calc(16px + 8px);
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: var(--border-strong);
+    z-index: 0;
+  }
+  .fsi-item.done:not(:last-child)::after { background: var(--accent); }
+  .fsi-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: all 0.2s;
+  }
+  .fsi-item.active .fsi-num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .fsi-item.done .fsi-num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .fsi-label {
+    font-size: 11.5px;
+    color: var(--text-tertiary);
+    white-space: nowrap;
+  }
+  .fsi-item.active .fsi-label { color: var(--accent); font-weight: 500; }
+  .fsi-item.done .fsi-label { color: var(--text-secondary); }
+
+  .form-body {
+    padding: 28px 32px 32px;
+  }
+  .form-step { display: none; }
+  .form-step.active { display: block; }
+
+  .field-group { margin-bottom: 22px; }
+  .field-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 7px;
+  }
+  .field-hint {
+    font-size: 11.5px;
+    color: var(--text-tertiary);
+    margin-bottom: 7px;
+    line-height: 1.4;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-sm);
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    resize: none;
+    -webkit-appearance: none;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(27,77,74,0.1);
+    background: var(--surface);
+  }
+  textarea { min-height: 120px; line-height: 1.6; }
+  select { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B6965' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 36px; }
+  .char-count { font-size: 11px; color: var(--text-tertiary); text-align: right; margin-top: 5px; }
+
+  .category-radio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .cat-radio {
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--bg);
+  }
+  .cat-radio:hover { border-color: var(--accent); background: var(--accent-xlight); }
+  .cat-radio.selected { border-color: var(--accent); background: var(--accent-xlight); box-shadow: 0 0 0 3px rgba(27,77,74,0.08); }
+  .cat-radio input { display: none; }
+  .cat-radio-dot {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .cat-radio.selected .cat-radio-dot {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+  .cat-radio.selected .cat-radio-dot::after {
+    content: '';
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #fff;
+  }
+  .cat-radio-content {}
+  .cat-radio-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; margin-bottom: 3px; }
+  .cat-radio-desc { font-size: 11px; color: var(--text-secondary); line-height: 1.4; font-weight: 300; }
+
+  .anon-toggle {
+    display: flex;
+    gap: 10px;
+  }
+  .anon-opt {
+    flex: 1;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-md);
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: var(--bg);
+  }
+  .anon-opt:hover { border-color: var(--accent); background: var(--accent-xlight); }
+  .anon-opt.selected { border-color: var(--accent); background: var(--accent-xlight); box-shadow: 0 0 0 3px rgba(27,77,74,0.08); }
+  .anon-opt-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 7px; }
+  .anon-opt-title svg { width: 16px; height: 16px; color: var(--accent); }
+  .anon-opt-desc { font-size: 11.5px; color: var(--text-secondary); line-height: 1.5; font-weight: 300; }
+
+  .form-footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    margin-top: 28px;
+  }
+  .btn-back {
+    background: none;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--r-sm);
+    padding: 10px 20px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.15s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-back:hover { background: var(--bg); }
+  .btn-next {
+    background: var(--accent);
+    border: none;
+    border-radius: var(--r-sm);
+    padding: 11px 26px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #fff;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background 0.15s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-next:hover { background: var(--accent-mid); }
+  .step-counter { font-size: 12px; color: var(--text-tertiary); }
+
+  /* ─── SIDEBAR ─── */
+  .form-sidebar {
+    position: sticky;
+    top: 80px;
+  }
+  .sidebar-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--r-xl);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 14px;
+  }
+  .sidebar-card-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sidebar-card-title svg { width: 16px; height: 16px; color: var(--accent); }
+  .guarantee-list { list-style: none; }
+  .guarantee-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .guarantee-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .g-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--success-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .g-check svg { width: 10px; height: 10px; color: var(--success); }
+
+  .track-box {
+    background: var(--accent-light);
+    border: 1px solid rgba(27,77,74,0.15);
+    border-radius: var(--r-lg);
+    padding: 20px;
+  }
+  .track-box-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .track-box-title svg { width: 15px; height: 15px; }
+  .track-box p { font-size: 12px; color: var(--accent-mid); line-height: 1.55; font-weight: 300; margin-bottom: 14px; }
+  .track-input-row { display: flex; gap: 8px; }
+  .track-input-row input {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid rgba(27,77,74,0.2);
+    font-size: 13px;
+    padding: 9px 12px;
+  }
+  .track-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: var(--r-sm);
+    padding: 9px 16px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .track-btn:hover { background: var(--accent-mid); }
+
+  .law-box {
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: 18px 20px;
+    background: var(--bg);
+  }
+  .law-box-title { font-size: 12px; font-weight: 500; color: var(--text); margin-bottom: 8px; }
+  .law-box p { font-size: 11.5px; color: var(--text-secondary); line-height: 1.55; font-weight: 300; }
+  .law-box a { color: var(--accent); text-decoration: none; }
+  .law-box a:hover { text-decoration: underline; }
+
+  /* ─── SUCCESS STATE ─── */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 48px 32px;
+  }
+  .success-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--success-light);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+  }
+  .success-icon svg { width: 28px; height: 28px; color: var(--success); }
+  .success-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .success-sub { font-size: 14px; color: var(--text-secondary); line-height: 1.6; font-weight: 300; margin-bottom: 28px; }
+  .id-box {
+    background: var(--accent-light);
+    border: 1px solid rgba(27,77,74,0.2);
+    border-radius: var(--r-md);
+    padding: 16px 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .id-box:hover { background: #D5E9E8; }
+  .id-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--accent); font-weight: 500; margin-bottom: 3px; }
+  .id-val { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: var(--accent); letter-spacing: 0.05em; }
+  .id-copy { font-size: 12px; color: var(--accent); display: flex; align-items: center; gap: 5px; }
+  .id-copy svg { width: 14px; height: 14px; }
+  .success-next-steps { text-align: left; background: var(--bg); border-radius: var(--r-md); border: 1px solid var(--border); padding: 20px; }
+  .sns-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 12px; }
+  .sns-list { list-style: none; }
+  .sns-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--text-secondary); padding: 8px 0; border-bottom: 1px solid var(--border); line-height: 1.5; }
+  .sns-list li:last-child { border-bottom: none; }
+  .sns-num { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 11px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+
+  /* ─── FAQ ─── */
+  .faq-bg { background: var(--surface); border-top: 1px solid var(--border); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .faq-q {
+    padding: 18px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    line-height: 1.4;
+  }
+  .faq-q:hover { background: rgba(0,0,0,0.02); }
+  .faq-chevron { flex-shrink: 0; transition: transform 0.2s; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a {
+    display: none;
+    padding: 0 20px 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    font-weight: 300;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--text);
+    color: rgba(255,255,255,0.5);
+    padding: 40px 40px;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 10px; }
+  .footer-logo-mark {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+  /* ─── DIVIDER ─── */
+  .section-divider { height: 1px; background: var(--border); max-width: 1100px; margin: 0 auto; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeUp 0.6s ease both; }
+  .hero-left > *:nth-child(1) { animation-delay: 0.05s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.15s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.2s; }
+  .hero-right { animation: fadeUp 0.7s 0.25s ease both; }
+
+  /* ─── PROGRESS BAR ─── */
+  .form-progress {
+    height: 3px;
+    background: var(--border);
+    border-radius: 0;
+  }
+  .form-progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 0;
+    transition: width 0.35s ease;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-item"><span>🔒</span> Анонимность гарантирована</div>
+  <div class="topbar-dot"></div>
+  <div class="topbar-item"><span>⚡</span> Ответ в течение 14 дней</div>
+  <div class="topbar-dot"></div>
+  <div class="topbar-item"><span>🛡</span> Защита от преследования по ФЗ-273</div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-name">КомплаенсПро</div>
+        <span class="logo-sub">Горячая линия · Университет</span>
+      </div>
+    </a>
+    <nav>
+      <a href="#how">Как работает</a>
+      <a href="#categories">Категории</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#track" class="btn-track">Отследить обращение</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Работает · MVP запущен
+      </div>
+      <h1>Сообщите о нарушении <em>безопасно</em></h1>
+      <p class="hero-desc">
+        Конфиденциальный канал для студентов, сотрудников и внешних участников. Ваша анонимность защищена технически — мы не собираем IP-адреса и не хранили личные данные без вашего согласия.
+      </p>
+      <div class="hero-actions">
+        <a href="#form" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Подать обращение
+        </a>
+        <a href="#how" class="btn-secondary">Как это работает</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </div>
+          <div>
+            <div class="trust-label">Анонимно</div>
+            <div class="trust-desc">IP не сохраняется, данные не передаются</div>
+          </div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div>
+            <div class="trust-label">Защищено</div>
+            <div class="trust-desc">Шифрование AES-256, серверы в РФ</div>
+          </div>
+        </div>
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div>
+            <div class="trust-label">Гарантировано</div>
+            <div class="trust-desc">Ответ в 14 дней по регламенту</div>
+          </div>
+        </div>
+      </div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-val">48 ч</div>
+          <div class="stat-label">Первый ответ по критичным случаям</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">0</div>
+          <div class="stat-label">Случаев деанонимизации за всё время</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">ФЗ-273</div>
+          <div class="stat-label">Соответствие антикоррупционному закону</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section">
+  <div class="section-label">Процесс</div>
+  <h2 class="section-title">Как работает горячая линия</h2>
+  <p class="section-sub">Четыре простых шага от подачи до получения результата. Весь процесс занимает не более 5 минут.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-tag">Шаг 1</div>
+      <div class="step-num">01</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <h3>Выберите категорию и опишите ситуацию</h3>
+      <p>Заполните форму — укажите тип нарушения, факультет и описание. Регистрация не нужна. Форма занимает 3–5 минут.</p>
+    </div>
+    <div class="step">
+      <div class="step-tag">Шаг 2</div>
+      <div class="step-num">02</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <h3>Получите уникальный ID обращения</h3>
+      <p>После отправки система генерирует ID — сохраните его. По этому коду вы сможете отслеживать статус без раскрытия личности.</p>
+    </div>
+    <div class="step">
+      <div class="step-tag">Шаг 3</div>
+      <div class="step-num">03</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </div>
+      <h3>Комплаенс-офицер рассматривает обращение</h3>
+      <p>Специалист изучает обращение, при необходимости задаёт уточняющие вопросы через анонимный чат. Срок — до 14 дней.</p>
+    </div>
+    <div class="step">
+      <div class="step-tag">Шаг 4</div>
+      <div class="step-num">04</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <h3>Вы получаете уведомление о результате</h3>
+      <p>По завершении расследования вы узнаёте об итогах. Все меры фиксируются. Ежеквартально публикуется анонимизированный отчёт.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CATEGORIES -->
+<div id="categories" class="categories-bg">
+  <div class="section">
+    <div class="section-label">Что можно сообщить</div>
+    <h2 class="section-title">Категории нарушений</h2>
+    <p class="section-sub">Горячая линия принимает обращения по шести ключевым категориям. Если ваш случай не попадает ни в одну — используйте «Иное».</p>
+    <div class="cat-grid">
+      <div class="cat-card high">
+        <div class="cat-level"><span class="cat-level-dot"></span>Высокий приоритет</div>
+        <div class="cat-title">Взятка и вымогательство</div>
+        <div class="cat-desc">Требование денег, подарков или услуг за оценку, зачёт, допуск к экзамену или любое другое академическое решение.</div>
+      </div>
+      <div class="cat-card high">
+        <div class="cat-level"><span class="cat-level-dot"></span>Высокий приоритет</div>
+        <div class="cat-title">Нарушения в закупках</div>
+        <div class="cat-desc">Аффилированные поставщики, завышение стоимости контрактов, откаты при тендерах, нецелевое расходование средств.</div>
+      </div>
+      <div class="cat-card medium">
+        <div class="cat-level"><span class="cat-level-dot"></span>Средний приоритет</div>
+        <div class="cat-title">Конфликт интересов</div>
+        <div class="cat-desc">Ситуации, когда личные или финансовые интересы сотрудника противоречат интересам университета — без раскрытия.</div>
+      </div>
+      <div class="cat-card medium">
+        <div class="cat-level"><span class="cat-level-dot"></span>Средний приоритет</div>
+        <div class="cat-title">Академическая нечестность</div>
+        <div class="cat-desc">Присвоение научных результатов, фальсификация данных, принуждение к соавторству, нарушение авторских прав.</div>
+      </div>
+      <div class="cat-card low">
+        <div class="cat-level"><span class="cat-level-dot"></span>Стандартный</div>
+        <div class="cat-title">Дискриминация и давление</div>
+        <div class="cat-desc">Предвзятость при оценивании, давление на студентов или сотрудников, харассмент, нарушение трудовых прав.</div>
+      </div>
+      <div class="cat-card low">
+        <div class="cat-level"><span class="cat-level-dot"></span>Стандартный</div>
+        <div class="cat-title">Иное нарушение</div>
+        <div class="cat-desc">Любое нарушение, не попадающее в перечисленные категории. Комплаенс-офицер самостоятельно определит приоритет.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORM SECTION -->
+<section id="form" class="section">
+  <div class="section-label">Подача обращения</div>
+  <h2 class="section-title">Расскажите о нарушении</h2>
+  <p class="section-sub">Заполните форму — это займёт около 5 минут. Вы можете оставаться полностью анонимным.</p>
+
+  <div class="form-wrap">
+    <!-- MAIN FORM -->
+    <div>
+      <div class="form-main">
+        <div class="form-progress"><div class="form-progress-fill" id="progressFill" style="width:25%"></div></div>
+        <div class="form-header">
+          <div class="form-header-title">Новое обращение</div>
+          <div class="form-header-sub">Все поля, кроме отмеченных, необязательны. Ваши данные защищены.</div>
+        </div>
+
+        <!-- STEP INDICATOR -->
+        <div class="form-steps-indicator">
+          <div class="fsi-item active" id="fsi-1">
+            <div class="fsi-num">1</div>
+            <span class="fsi-label">Категория</span>
+          </div>
+          <div class="fsi-item" id="fsi-2">
+            <div class="fsi-num">2</div>
+            <span class="fsi-label">Описание</span>
+          </div>
+          <div class="fsi-item" id="fsi-3">
+            <div class="fsi-num">3</div>
+            <span class="fsi-label">Детали</span>
+          </div>
+          <div class="fsi-item" id="fsi-4">
+            <div class="fsi-num">4</div>
+            <span class="fsi-label">Контакт</span>
+          </div>
+        </div>
+
+        <div class="form-body">
+
+          <!-- STEP 1: CATEGORY -->
+          <div class="form-step active" id="step-1">
+            <div class="field-group">
+              <label class="field-label">Категория нарушения <span style="color:var(--red)">*</span></label>
+              <div class="field-hint">Выберите наиболее подходящую категорию. Это помогает направить обращение нужному специалисту.</div>
+              <div class="category-radio-grid">
+                <label class="cat-radio" onclick="selectCat(this)">
+                  <input type="radio" name="category" value="bribe">
+                  <div class="cat-radio-dot"></div>
+                  <div class="cat-radio-content">
+                    <div class="cat-radio-title">Взятка / вымогательство</div>
+                    <div class="cat-radio-desc">Требование денег или услуг за академические решения</div>
+                  </div>
+                </label>
+                <label class="cat-radio" onclick="selectCat(this)">
+                  <input type="radio" name="category" value="procurement">
+                  <div class="cat-radio-dot"></div>
+                  <div class="cat-radio-content">
+                    <div class="cat-radio-title">Нарушения в закупках</div>
+                    <div class="cat-radio-desc">Аффилированные поставщики, откаты, нецелевые расходы</div>
+                  </div>
+                </label>
+                <label class="cat-radio" onclick="selectCat(this)">
+                  <input type="radio" name="category" value="conflict">
+                  <div class="cat-radio-dot"></div>
+                  <div class="cat-radio-content">
+                    <div class="cat-radio-title">Конфликт интересов</div>
+                    <div class="cat-radio-desc">Личные интересы противоречат интересам вуза</div>
+                  </div>
+                </label>
+                <label class="cat-radio" onclick="selectCat(this)">
+                  <input type="radio" name="category" value="academic">
+                  <div class="cat-radio-dot"></div>
+                  <div class="cat-radio-content">
+                    <div class="cat-radio-title">Академическая нечестность</div>
+                    <div class="cat-radio-desc">Присвоение результатов, фальсификация данных</div>
+                  </div>
+                </label>
+                <label class="cat-radio" onclick="selectCat(this)">
+                  <input type="radio" name="category" value="discrimination">
+                  <div class="cat-radio-dot"></div>
+                  <div class="cat-radio-content">
+                    <div class="cat-radio-title">Дискриминация / давление</div>
+                    <div class="cat-radio-desc">Предвзятость, харассмент, нарушение прав</div>
+                  </div>
+                </label>
+                <label class="cat-radio" onclick="selectCat(this)">
+                  <input type="radio" name="category" value="other">
+                  <div class="cat-radio-dot"></div>
+                  <div class="cat-radio-content">
+                    <div class="cat-radio-title">Иное нарушение</div>
+                    <div class="cat-radio-desc">Не попадает в перечисленные категории</div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <div class="form-footer-actions">
+              <span class="step-counter">Шаг 1 из 4</span>
+              <button class="btn-next" onclick="nextStep(1)">
+                Продолжить
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: DESCRIPTION -->
+          <div class="form-step" id="step-2">
+            <div class="field-group">
+              <label class="field-label">Опишите ситуацию <span style="color:var(--red)">*</span></label>
+              <div class="field-hint">Изложите факты: что произошло, когда, при каких обстоятельствах. Избегайте предположений — только то, что вы знаете или видели лично.</div>
+              <textarea id="description" placeholder="Например: 15 апреля на консультации по курсу «Экономика» преподаватель Иванов И.И. в устной форме сообщил мне, что для получения зачёта без сдачи мне необходимо передать ему..." onkeyup="updateCount(this, 'desc-count', 2000)"></textarea>
+              <div class="char-count"><span id="desc-count">0</span> / 2000 символов</div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Есть ли документальные свидетельства?</label>
+              <div class="field-hint">Скриншоты, переписка, документы — всё это значительно усиливает обращение. Файлы шифруются при загрузке.</div>
+              <div style="border: 1.5px dashed var(--border-strong); border-radius: var(--r-md); padding: 24px; text-align: center; cursor: pointer; background: var(--bg); transition: border-color 0.15s, background 0.15s;" onmouseover="this.style.borderColor='var(--accent)';this.style.background='var(--accent-xlight)'" onmouseout="this.style.borderColor='var(--border-strong)';this.style.background='var(--bg)'">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 10px;display:block"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <div style="font-size:13px;color:var(--text-secondary);margin-bottom:4px;">Перетащите файлы или <span style="color:var(--accent);font-weight:500;">нажмите для выбора</span></div>
+                <div style="font-size:11px;color:var(--text-tertiary);">PDF, JPG, PNG, DOCX — до 20 МБ</div>
+              </div>
+            </div>
+            <div class="form-footer-actions">
+              <button class="btn-back" onclick="prevStep(2)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Назад
+              </button>
+              <button class="btn-next" onclick="nextStep(2)">
+                Продолжить
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: DETAILS -->
+          <div class="form-step" id="step-3">
+            <div class="field-group">
+              <label class="field-label">Подразделение / факультет</label>
+              <select>
+                <option value="">Не указывать</option>
+                <option>Факультет экономики и управления</option>
+                <option>Юридический факультет</option>
+                <option>Факультет информационных технологий</option>
+                <option>Медицинский факультет</option>
+                <option>Факультет гуманитарных наук</option>
+                <option>Административный аппарат</option>
+                <option>Отдел закупок</option>
+                <option>Другое подразделение</option>
+              </select>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <div class="field-group">
+                <label class="field-label">Примерная дата события</label>
+                <input type="text" placeholder="Апрель 2025">
+              </div>
+              <div class="field-group">
+                <label class="field-label">Как долго это происходит?</label>
+                <select>
+                  <option value="">Не знаю</option>
+                  <option>Единичный случай</option>
+                  <option>Несколько месяцев</option>
+                  <option>Больше года</option>
+                  <option>Систематически</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Кто ещё может знать об этом?</label>
+              <div class="field-hint">Не называйте имён — только роли (другие студенты, сотрудники, преподаватели). Это поможет расследованию.</div>
+              <input type="text" placeholder="Например: другие студенты группы, коллеги по кафедре">
+            </div>
+            <div class="form-footer-actions">
+              <button class="btn-back" onclick="prevStep(3)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Назад
+              </button>
+              <button class="btn-next" onclick="nextStep(3)">
+                Продолжить
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: CONTACT -->
+          <div class="form-step" id="step-4">
+            <div class="field-group">
+              <label class="field-label">Способ взаимодействия</label>
+              <div class="field-hint">Офицер может задать уточняющие вопросы. Выберите, как вам комфортнее общаться.</div>
+              <div class="anon-toggle">
+                <div class="anon-opt selected" id="opt-anon" onclick="selectAnon('anon')">
+                  <div class="anon-opt-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    Анонимно
+                  </div>
+                  <div class="anon-opt-desc">Только по ID обращения. Ваша личность не раскрывается никогда.</div>
+                </div>
+                <div class="anon-opt" id="opt-contact" onclick="selectAnon('contact')">
+                  <div class="anon-opt-title">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Указать контакт
+                  </div>
+                  <div class="anon-opt-desc">Email или Telegram — только для уточнений по делу, данные зашифрованы.</div>
+                </div>
+              </div>
+            </div>
+            <div id="contact-fields" style="display:none">
+              <div class="field-group">
+                <label class="field-label">Email или Telegram</label>
+                <input type="email" placeholder="name@university.ru или @username">
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Что вы ожидаете от рассмотрения?</label>
+              <select>
+                <option value="">Не указывать</option>
+                <option>Проведение внутренней проверки</option>
+                <option>Принятие мер в отношении нарушителя</option>
+                <option>Изменение процедуры или регламента</option>
+                <option>Просто зафиксировать факт</option>
+              </select>
+            </div>
+            <div style="background:var(--amber-light);border:1px solid rgba(180,83,9,0.15);border-radius:var(--r-md);padding:14px 16px;display:flex;gap:12px;align-items:flex-start;margin-bottom:22px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div style="font-size:12px;color:var(--amber);line-height:1.55">Намеренно ложные обращения могут привести к дисциплинарной ответственности. Если вы не уверены, является ли ситуация нарушением — просто опишите её, офицер сам определит квалификацию.</div>
+            </div>
+            <div class="form-footer-actions">
+              <button class="btn-back" onclick="prevStep(4)">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Назад
+              </button>
+              <button class="btn-next" onclick="submitForm()" style="background:var(--success);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Отправить обращение
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /form-body -->
+
+        <!-- SUCCESS SCREEN -->
+        <div class="success-screen" id="success-screen">
+          <div class="success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="success-title">Обращение принято</div>
+          <p class="success-sub">Ваше обращение зарегистрировано и направлено комплаенс-офицеру.<br>Сохраните ID — он понадобится для отслеживания статуса.</p>
+          <div class="id-box" onclick="copyId()">
+            <div>
+              <div class="id-label">Номер обращения</div>
+              <div class="id-val" id="generatedId">—</div>
+            </div>
+            <div class="id-copy">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Скопировать
+            </div>
+          </div>
+          <div class="success-next-steps">
+            <div class="sns-title">Что происходит дальше</div>
+            <ul class="sns-list">
+              <li><span class="sns-num">1</span>Комплаенс-офицер получит ваше обращение в течение 15 минут и изучит его в приоритетном порядке</li>
+              <li><span class="sns-num">2</span>При необходимости уточнений офицер напишет вам через анонимный чат — проверяйте статус по ID</li>
+              <li><span class="sns-num">3</span>Срок рассмотрения — до 14 дней. По критичным категориям — до 48 часов</li>
+              <li><span class="sns-num">4</span>По завершении вы получите уведомление об итогах расследования</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /form-main -->
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="form-sidebar">
+      <div id="track" class="track-box">
+        <div class="track-box-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Отследить обращение
+        </div>
+        <p>Уже подавали обращение? Введите ваш ID, чтобы узнать статус и прочитать сообщения офицера.</p>
+        <div class="track-input-row">
+          <input type="text" placeholder="КП-2025-XXXX">
+          <button class="track-btn">Найти</button>
+        </div>
+      </div>
+
+      <div class="sidebar-card" style="margin-top:14px">
+        <div class="sidebar-card-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Ваши гарантии
+        </div>
+        <ul class="guarantee-list">
+          <li>
+            <div class="g-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>IP-адрес не сохраняется и недоступен даже администраторам системы</span>
+          </li>
+          <li>
+            <div class="g-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>Личные данные (при указании) зашифрованы AES-256 и недоступны без специального запроса</span>
+          </li>
+          <li>
+            <div class="g-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>Запрет на преследование заявителей закреплён во внутреннем регламенте и ФЗ-273</span>
+          </li>
+          <li>
+            <div class="g-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>Данные хранятся только на российских серверах, соответствие 152-ФЗ</span>
+          </li>
+          <li>
+            <div class="g-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span>Ответ по каждому обращению гарантирован в срок не более 14 дней</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="law-box">
+        <div class="law-box-title">Правовая база</div>
+        <p>Система работает в соответствии с требованиями <a href="#">ФЗ-273 «Об образовании»</a>, <a href="#">ФЗ-152 «О персональных данных»</a> и внутренним регламентом антикоррупционного комплаенса университета.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FAQ -->
+<div class="faq-bg" id="faq">
+  <div class="section">
+    <div class="section-label">Вопросы и ответы</div>
+    <h2 class="section-title">Часто задаваемые вопросы</h2>
+    <p class="section-sub" style="margin-bottom:36px">Если у вас остались вопросы — напишите на compliance@university.ru</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Действительно ли моё обращение анонимно?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Да. Мы технически не собираем IP-адреса при анонимной подаче. Единственная связь между вами и обращением — уникальный ID, который знаете только вы. Даже системный администратор не может установить личность анонимного заявителя.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Что произойдёт с нарушителем после моего обращения?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Комплаенс-офицер проводит внутреннее расследование. При подтверждении нарушения применяются меры в соответствии с регламентом: от предупреждения до увольнения или передачи материалов в правоохранительные органы. Вы получите уведомление об итогах.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Могу ли я пострадать за подачу обращения?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Преследование заявителей запрещено внутренним регламентом университета и подкреплено требованиями антикоррупционного законодательства. Если вы заметите признаки давления после подачи обращения — незамедлительно сообщите об этом через тот же канал.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Что делать, если я не уверен, является ли ситуация нарушением?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Просто опишите ситуацию. Квалифицировать её как нарушение или нет — задача комплаенс-офицера, не ваша. Лучше сообщить о сомнительной ситуации, чем промолчать. Ложного срабатывания не существует, если вы действуете добросовестно.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Могу ли я подать обращение, если я не студент вуза?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Да. Горячая линия открыта для всех участников: студентов, преподавателей, сотрудников, а также внешних лиц — подрядчиков, партнёров, абитуриентов и их родителей. При заполнении формы выберите свою роль.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Как долго хранятся данные моего обращения?
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="faq-a">Данные закрытых обращений хранятся 3 года в зашифрованном виде в соответствии с требованиями законодательства. После истечения срока — автоматически удаляются. Все операции с данными фиксируются в журнале аудита.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo-mark">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <span class="footer-name">КомплаенсПро</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">Политика конфиденциальности</a>
+      <a href="#">Регламент обработки обращений</a>
+      <a href="#">Антикоррупционная политика</a>
+      <a href="#">compliance@university.ru</a>
+    </div>
+    <div class="footer-copy">© 2025 · MVP v1.0 · Все данные хранятся на серверах в РФ</div>
+  </div>
+</footer>
+
+<script>
+  let currentStep = 1;
+  const totalSteps = 4;
+
+  function updateProgress(step) {
+    const pct = (step / totalSteps) * 100;
+    document.getElementById('progressFill').style.width = pct + '%';
+    for (let i = 1; i <= totalSteps; i++) {
+      const el = document.getElementById('fsi-' + i);
+      el.classList.remove('active', 'done');
+      if (i < step) el.classList.add('done');
+      if (i === step) el.classList.add('active');
+    }
+  }
+
+  function showStep(n) {
+    document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById('step-' + n);
+    if (el) el.classList.add('active');
+    currentStep = n;
+    updateProgress(n);
+    document.querySelector('.form-header').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function nextStep(from) { if (from < totalSteps) showStep(from + 1); }
+  function prevStep(from) { if (from > 1) showStep(from - 1); }
+
+  function selectCat(el) {
+    document.querySelectorAll('.cat-radio').forEach(r => r.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function selectAnon(type) {
+    document.getElementById('opt-anon').classList.remove('selected');
+    document.getElementById('opt-contact').classList.remove('selected');
+    document.getElementById('opt-' + type).classList.add('selected');
+    document.getElementById('contact-fields').style.display = type === 'contact' ? 'block' : 'none';
+  }
+
+  function updateCount(el, countId, max) {
+    const len = el.value.length;
+    document.getElementById(countId).textContent = len;
+    if (len > max) el.value = el.value.substring(0, max);
+  }
+
+  function generateId() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let id = 'КП-2025-';
+    for (let i = 0; i < 4; i++) id += chars[Math.floor(Math.random() * chars.length)];
+    return id;
+  }
+
+  function submitForm() {
+    const id = generateId();
+    document.getElementById('generatedId').textContent = id;
+    document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+    document.querySelector('.form-steps-indicator').style.display = 'none';
+    document.querySelector('.form-progress').style.display = 'none';
+    document.querySelector('.form-header').style.display = 'none';
+    document.getElementById('success-screen').style.display = 'block';
+    document.getElementById('success-screen').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    document.getElementById('progressFill').style.width = '100%';
+  }
+
+  function copyId() {
+    const id = document.getElementById('generatedId').textContent;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(id).then(() => {
+        const box = document.querySelector('.id-copy');
+        const orig = box.innerHTML;
+        box.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px"><polyline points="20 6 9 17 4 12"/></svg> Скопировано!';
+        setTimeout(() => { box.innerHTML = orig; }, 2000);
+      });
+    }
+  }
+
+  function toggleFaq(el) {
+    const item = el.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
